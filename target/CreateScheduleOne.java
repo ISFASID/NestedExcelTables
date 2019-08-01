@@ -45,6 +45,8 @@ public class CreateScheduleOne {
         cellZero.setCellValue("序号");
         //边框加粗
         CellStyle cellStyle =setCellFontStyle.setCellBorderMedium(wb);
+        //设置单元格白色背景--> 在导出的excel中,合并的单元格双击会全黑，设置这个改变样式使其双击后能够正常显示合并后单元格中的文字
+        //不信删除以下两行代码试试
         cellStyle.setFillForegroundColor(IndexedColors.WHITE.index);
         cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         //加粗
