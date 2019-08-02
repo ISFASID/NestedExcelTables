@@ -1,10 +1,9 @@
-package co.tests.main.POI.target;
+package co.tests.main.POI.PollutantLineWasteWaterAttachedTable;
 
-import co.tests.main.POI.target.entity.Pollutant;
-import co.tests.main.POI.target.entity.ProductStation;
-import co.tests.main.POI.target.entity.ProductionLine;
-import co.tests.main.POI.target.entity.WasteWater;
-import net.sf.jasperreports.engine.export.oasis.RowStyle;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.Pollutant;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.ProductStation;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.ProductionLine;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.WasteWater;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -32,105 +31,138 @@ public class CreateScheduleOne {
     productionLines = CreateEntityDatas.createProductionDatas(5);
     }
     /**
-    * @Description: 生成标题
+    * @Description: 生成列标题
     * @Param:
     * @return:
     * @Author: CreateScheduleOne
     * @Date: 2019/8/1
     */
     public XSSFWorkbook createFirstRowValue(){
+
+
+
         Sheet sheet = wb.createSheet();
-        Row row = sheet.createRow(0);
-        Cell cellZero = row.createCell(0);
-        cellZero.setCellValue("序号");
+        Row rowFirst = sheet.createRow(0);
+        Row rowSecond = sheet.createRow(1);
+        //首先设置前两行
+        //第一行
+        Cell firstRow = rowFirst.createCell(0);
+        firstRow.setCellValue("附表一");
+        CellStyle cellStyleFirstRow = wb.createCellStyle();
+        setCellFontStyle.setCellWhiteStyle(cellStyleFirstRow);
+        cellStyleFirstRow.setFont(setCellFontStyle.setCellFontrBold(wb));
+        firstRow.setCellStyle(cellStyleFirstRow);
+        mergeCellStyle.mergeFirstRow(sheet,0,0);
+
+        //第二行
+        rowSecond.setHeight((short)650);
+        Cell secondRow = rowSecond.createCell(0);
+        CellStyle secondRowCellStyle = wb.createCellStyle();
+        setCellFontStyle.setCellCenter(secondRowCellStyle);
+        setCellFontStyle.setCellWhiteStyle(secondRowCellStyle);
+        secondRowCellStyle.setWrapText(true);
+        secondRow.setCellValue("XXXX企业( )年度废水污染物产生情况表(生产线废水)\r\n(填报基准年为上一年度，参照附件2填报说明进行填报)");
+        Font font = wb.createFont();
+        font.setFontHeightInPoints((short)13);
+        font.setBold(true);
+        secondRowCellStyle.setFont(font);
+        secondRow.setCellStyle(secondRowCellStyle);
+        mergeCellStyle.mergeFirstRow(sheet,1,1);
+
+        Row rowThird = sheet.createRow(2);
+        Cell cellZero = rowThird.createCell(0);
+        cellZero.setCellValue("序\r\n号");
         //边框加粗
-        CellStyle cellStyle =setCellFontStyle.setCellBorderMedium(wb);
+        CellStyle cellStyle = wb.createCellStyle();
+        setCellFontStyle.setCellBorderMedium(cellStyle);
+        setCellFontStyle.setCellCenter(cellStyle);
         cellStyle.setFillForegroundColor(IndexedColors.WHITE.index);
         cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        cellStyle.setWrapText(true);
         //加粗
         Font boldFont = setCellFontStyle.setCellFontrBold(wb);
 
         //设置文字纵向排列
 //        cellStyle.setRotation((short)255);
         cellZero.setCellStyle(cellStyle);
-        sheet.setColumnWidth(0,255*5);
+        sheet.setColumnWidth(0,255*3);
 
 
 
 
-        Cell cellOne = row.createCell(1);
-        cellOne.setCellValue("生产线名称");
+        Cell cellOne = rowThird.createCell(1);
+        cellOne.setCellValue("生产线\r\n名称");
         cellStyle.setFont(boldFont);
         cellStyle.setAlignment(HorizontalAlignment.CENTER);
         cellOne.setCellStyle(cellStyle);
-        sheet.setColumnWidth(1,255*12);
+        sheet.setColumnWidth(1,255*8);
 
 
-        Cell cellTwo = row.createCell(2);
-        cellTwo.setCellValue("生产线编号");
+        Cell cellTwo = rowThird.createCell(2);
+        cellTwo.setCellValue("生产线\r\n编号");
         cellStyle.setFont(boldFont);
         cellTwo.setCellStyle(cellStyle);
-        sheet.setColumnWidth(2,255*12);
+        sheet.setColumnWidth(2,255*8);
 
-        Cell cellThree = row.createCell(3);
-        cellThree.setCellValue("产品及产量");
+        Cell cellThree = rowThird.createCell(3);
+        cellThree.setCellValue("产品\r\n及产量");
         cellStyle.setFont(boldFont);
         cellThree.setCellStyle(cellStyle);
-        sheet.setColumnWidth(3,255*34);
+        sheet.setColumnWidth(3,255*10);
 
-        Cell cellFour = row.createCell(4);
-        cellFour.setCellValue("生产废水工段");
+        Cell cellFour = rowThird.createCell(4);
+        cellFour.setCellValue("生产废水\r\n工段");
         cellStyle.setFont(boldFont);
         cellFour.setCellStyle(cellStyle);
         sheet.setColumnWidth(4,255*14);
 
-        Cell cellFive = row.createCell(5);
-        cellFive.setCellValue("废水名称");
+        Cell cellFive = rowThird.createCell(5);
+        cellFive.setCellValue("废水\r\n名称");
         cellStyle.setFont(boldFont);
         cellFive.setCellStyle(cellStyle);
         sheet.setColumnWidth(5,255*10);
 
-        Cell cellSix = row.createCell(6);
-        cellSix.setCellValue("废水量");
+        Cell cellSix = rowThird.createCell(6);
+        cellSix.setCellValue("废水\r\n量");
         cellStyle.setFont(boldFont);
         cellSix.setCellStyle(cellStyle);
         sheet.setColumnWidth(6,255*8);
 
-        Cell cellSeven = row.createCell(7);
-        cellSeven.setCellValue("污染物名称");
+        Cell cellSeven = rowThird.createCell(7);
+        cellSeven.setCellValue("污染物\r\n名称");
         cellStyle.setFont(boldFont);
         cellSeven.setCellStyle(cellStyle);
         sheet.setColumnWidth(7,255*12);
 
-        Cell cellEight = row.createCell(8);
+        Cell cellEight = rowThird.createCell(8);
         cellEight.setCellValue("CAS号");
         cellStyle.setFont(boldFont);
         cellEight.setCellStyle(cellStyle);
         sheet.setColumnWidth(8,255*10);
 
-        Cell cellNine = row.createCell(9);
-        cellNine.setCellValue("污染物产生量");
+        Cell cellNine = rowThird.createCell(9);
+        cellNine.setCellValue("污染物\r\n产生量");
         cellStyle.setFont(boldFont);
         cellNine.setCellStyle(cellStyle);
-        sheet.setColumnWidth(9,255*15);
+        sheet.setColumnWidth(9,255*8);
 
-        Cell cellTen = row.createCell(10);
-        cellTen.setCellValue("涉及车间及装置");
+        Cell cellTen = rowThird.createCell(10);
+        cellTen.setCellValue("涉及车间及\r\n装置");
         cellStyle.setFont(boldFont);
         cellTen.setCellStyle(cellStyle);
-        sheet.setColumnWidth(10,255*15);
+        sheet.setColumnWidth(10,255*12);
 
-        Cell cellEleven = row.createCell(11);
-        cellEleven.setCellValue("汇入企业最终排放口名称");
+        Cell cellEleven = rowThird.createCell(11);
+        cellEleven.setCellValue("汇入企业最终排放口\r\n名称");
         cellStyle.setFont(boldFont);
         cellEleven.setCellStyle(cellStyle);
-        sheet.setColumnWidth(11,255*24);
+        sheet.setColumnWidth(11,255*10);
 
-        Cell cellTwelve = row.createCell(12);
-        cellTwelve.setCellValue("排放口排污许可编号");
+        Cell cellTwelve = rowThird.createCell(12);
+        cellTwelve.setCellValue("排放口排污\r\n许可编号");
         cellStyle.setFont(boldFont);
         cellTwelve.setCellStyle(cellStyle);
-        sheet.setColumnWidth(12,255*20);
+        sheet.setColumnWidth(12,255*10);
         return wb;
 
     }
@@ -151,7 +183,8 @@ public class CreateScheduleOne {
     public  void createPollutantExcelDatas(List<Pollutant> pollutants){
         Sheet sheet = getSheet();
         sheet.setDefaultRowHeight((short)300);
-        CellStyle cellStyle = setCellFontStyle.setCellBorderThin(wb);
+        CellStyle cellStyle = wb.createCellStyle();
+        setCellFontStyle.setCellBorderThin(cellStyle);
         cellStyle.setAlignment(HorizontalAlignment.CENTER);
         setCellFontStyle.setCellWhiteStyle(cellStyle);
         int len =  pollutants.size();
@@ -185,7 +218,8 @@ public class CreateScheduleOne {
         sheet.setDefaultRowHeight((short)200);
         int len = waters.size();
         int pollutantCount = 0;
-        CellStyle cellStyleMerge = setCellFontStyle.setCellCenter(this.wb);
+        CellStyle cellStyleMerge = wb.createCellStyle();
+        setCellFontStyle.setCellCenter(cellStyleMerge);
         setCellFontStyle.setCellWhiteStyle(cellStyleMerge);
         for(int i = 0; i < len; i++){
             //首先生成废水类中的污染物数据
@@ -230,7 +264,8 @@ public class CreateScheduleOne {
                 mergeCellStyle.mergeWastWater(sheet, lastRow - pollutantCount + 1, sheet.getLastRowNum());
             }
             else{
-                CellStyle cellStyle = setCellFontStyle.setCellBorderThin(this.wb);
+                CellStyle cellStyle = wb.createCellStyle();
+                setCellFontStyle.setCellBorderThin(cellStyle);
                 cellStyle.setAlignment(HorizontalAlignment.CENTER);
 
                 cellFive.setCellStyle(cellStyle);
@@ -257,11 +292,13 @@ public class CreateScheduleOne {
         int currentLastRow = 0;
         int fillValueRow = sheet.getLastRowNum() + 1;
 
-        CellStyle cellStyleMerge = setCellFontStyle.setCellCenter(wb);
+        CellStyle cellStyleMerge = wb.createCellStyle();
+        setCellFontStyle.setCellCenter(cellStyleMerge);
+
         setCellFontStyle.setCellWhiteStyle(cellStyleMerge);
         for(int i = 0; i < len; i++){
             createWasteWaterExcelDatas(productStations.get(i).getWasteWaters());
-//            System.err.println(sheet.getLastRowNum());
+//          System.err.println(sheet.getLastRowNum());
             currentLastRow = sheet.getLastRowNum();
             Row row = sheet.getRow(fillValueRow);
 
@@ -272,7 +309,8 @@ public class CreateScheduleOne {
             if(currentLastRow != fillValueRow){
                 mergeCellStyle.mergeProductStation(sheet, fillValueRow, currentLastRow);
             }else{
-                CellStyle cellStyle = setCellFontStyle.setCellBorderThin(this.wb);
+                CellStyle cellStyle = wb.createCellStyle();
+                setCellFontStyle.setCellBorderThin(cellStyle);
                 cellStyle.setAlignment(HorizontalAlignment.CENTER);
                 cellFour.setCellStyle(cellStyle);
             }
@@ -290,8 +328,9 @@ public class CreateScheduleOne {
 
         int currentLastRow = 0;
 
-        int fillValueRow = 1;
-        CellStyle cellStyleMerge = setCellFontStyle.setCellCenter(wb);
+        int fillValueRow = 3;
+        CellStyle cellStyleMerge = wb.createCellStyle();
+        setCellFontStyle.setCellCenter(cellStyleMerge);
         setCellFontStyle.setCellWhiteStyle(cellStyleMerge);
         for(int i = 0; i < len; i++){
             createProductStationExcelDatas(productionLines.get(i).getProductStations());
@@ -318,7 +357,8 @@ public class CreateScheduleOne {
             if(currentLastRow != fillValueRow){
                 mergeCellStyle.mergeProductLine(sheet, fillValueRow, currentLastRow);
             }else{
-                CellStyle cellStyle = setCellFontStyle.setCellBorderThin(this.wb);
+                CellStyle cellStyle = wb.createCellStyle();
+                setCellFontStyle.setCellBorderThin(cellStyle);
                 cellZero.setCellStyle(cellStyle);
                 cellOne.setCellStyle(cellStyle);
                 cellTwo.setCellStyle(cellStyle);
@@ -329,6 +369,14 @@ public class CreateScheduleOne {
         }
     }
 
+
+    /**
+     * 在表首部插入两行生成文本标题
+     */
+    public void createTextHeadLine(){
+        Sheet sheet = wb.getSheetAt(0);
+        sheet.shiftRows(0,0,1);
+    }
 
 
     /**

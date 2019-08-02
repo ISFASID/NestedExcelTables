@@ -1,6 +1,5 @@
-package co.tests.main.POI.target;
+package co.tests.main.POI.PollutantLineWasteWaterAttachedTable;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 
@@ -36,23 +35,23 @@ public class MergeCellStyle {
         CellRangeAddress licenseNumberRegion = new CellRangeAddress(fr,lr,12,12);
 
             sheet.addMergedRegion(wastWaterNameRegion);
-            setCellFontStyle.setMergeCellBold(wastWaterNameRegion,sheet);
+            setCellFontStyle.setMergeCellThin(wastWaterNameRegion,sheet);
 
 
             sheet.addMergedRegion(wastWaterProductionRegion);
-            setCellFontStyle.setMergeCellBold(wastWaterProductionRegion,sheet);
+            setCellFontStyle.setMergeCellThin(wastWaterProductionRegion,sheet);
 
 
             sheet.addMergedRegion(workShopAndEquipmentRegion);
-            setCellFontStyle.setMergeCellBold(workShopAndEquipmentRegion,sheet);
+            setCellFontStyle.setMergeCellThin(workShopAndEquipmentRegion,sheet);
 
 
             sheet.addMergedRegion(finalOutLetNameRegion);
-            setCellFontStyle.setMergeCellBold(finalOutLetNameRegion,sheet);
+            setCellFontStyle.setMergeCellThin(finalOutLetNameRegion,sheet);
 
 
             sheet.addMergedRegion(licenseNumberRegion);
-            setCellFontStyle.setMergeCellBold(licenseNumberRegion,sheet);
+            setCellFontStyle.setMergeCellThin(licenseNumberRegion,sheet);
 
     }
     
@@ -66,7 +65,7 @@ public class MergeCellStyle {
     public void mergeProductStation(Sheet sheet,int fr,int lr){
         CellRangeAddress stationNameRegion = new CellRangeAddress(fr,lr,4,4);
         sheet.addMergedRegion(stationNameRegion);
-        setCellFontStyle.setMergeCellBold(stationNameRegion,sheet);
+        setCellFontStyle.setMergeCellThin(stationNameRegion,sheet);
     }
 
     /**
@@ -78,19 +77,31 @@ public class MergeCellStyle {
     public void mergeProductLine(Sheet sheet,int fr,int lr){
         CellRangeAddress productionLineId = new CellRangeAddress(fr,lr,0,0);
         sheet.addMergedRegion(productionLineId);
-        setCellFontStyle.setMergeCellBold(productionLineId,sheet);
+        setCellFontStyle.setMergeCellThin(productionLineId,sheet);
 
         CellRangeAddress productionLineName = new CellRangeAddress(fr,lr,1,1);
         sheet.addMergedRegion(productionLineName);
-        setCellFontStyle.setMergeCellBold(productionLineName,sheet);
+        setCellFontStyle.setMergeCellThin(productionLineName,sheet);
 
         CellRangeAddress productionLineNumber = new CellRangeAddress(fr,lr,2,2);
         sheet.addMergedRegion(productionLineNumber);
-        setCellFontStyle.setMergeCellBold(productionLineNumber,sheet);
+        setCellFontStyle.setMergeCellThin(productionLineNumber,sheet);
 
         CellRangeAddress productAndyield = new CellRangeAddress(fr,lr,3,3);
         sheet.addMergedRegion(productAndyield);
-        setCellFontStyle.setMergeCellBold(productAndyield,sheet);
+        setCellFontStyle.setMergeCellThin(productAndyield,sheet);
+    }
+
+    /**
+     * 合并第一\二行并设置边框
+     * @param sheet
+     * @param fr
+     * @param lr
+     */
+    public void mergeFirstRow(Sheet sheet,int fr,int lr){
+        CellRangeAddress firstRow = new CellRangeAddress(fr,lr,0,12);
+        sheet.addMergedRegion(firstRow);
+        setCellFontStyle.setMergeCellBold(firstRow,sheet);
     }
 
 }

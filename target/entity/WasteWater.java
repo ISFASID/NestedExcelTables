@@ -1,4 +1,4 @@
-package co.tests.main.POI.target.entity;
+package co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity;
 
 import java.util.List;
 

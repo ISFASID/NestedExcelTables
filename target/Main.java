@@ -1,4 +1,4 @@
-package co.tests.main.POI.target;
+package co.tests.main.POI.PollutantLineWasteWaterAttachedTable;
 
 
 public class Main {
@@ -10,6 +10,7 @@ public class Main {
 //        //生成表中数据
 //        createScheduleOne.createWasteWaterExcelDatas();
         createScheduleOne.createProductLineExcelDatas();
+//        createScheduleOne.createTextHeadLine();
         createScheduleOne.WriteOut("C:\\Users\\Administrator\\Desktop\\test6.xlsx");
     }
 }

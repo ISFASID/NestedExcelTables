@@ -1,9 +1,9 @@
-package co.tests.main.POI.target;
+package co.tests.main.POI.PollutantLineWasteWaterAttachedTable;
 
-import co.tests.main.POI.target.entity.Pollutant;
-import co.tests.main.POI.target.entity.ProductStation;
-import co.tests.main.POI.target.entity.ProductionLine;
-import co.tests.main.POI.target.entity.WasteWater;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.Pollutant;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.ProductStation;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.ProductionLine;
+import co.tests.main.POI.PollutantLineWasteWaterAttachedTable.entity.WasteWater;
 
 import java.util.ArrayList;
 import java.util.List;
