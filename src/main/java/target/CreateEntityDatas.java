@@ -1,9 +1,10 @@
-package co.tests.main.POI.target;
+package target;
 
-import co.tests.main.POI.target.entity.Pollutant;
-import co.tests.main.POI.target.entity.ProductStation;
-import co.tests.main.POI.target.entity.ProductionLine;
-import co.tests.main.POI.target.entity.WasteWater;
+
+import target.entity.Pollutant;
+import target.entity.ProductStation;
+import target.entity.ProductionLine;
+import target.entity.WasteWater;
 
 import java.util.ArrayList;
 import java.util.List;

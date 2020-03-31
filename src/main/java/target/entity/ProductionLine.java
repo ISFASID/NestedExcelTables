@@ -1,4 +1,4 @@
-package co.tests.main.POI.target.entity;
+package target.entity;
 
 import java.util.List;
 

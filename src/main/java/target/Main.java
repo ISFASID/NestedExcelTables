@@ -1,4 +1,4 @@
-package co.tests.main.POI.target;
+package target;
 
 
 public class Main {
@@ -10,6 +10,7 @@ public class Main {
 //        //生成表中数据
 //        createScheduleOne.createWasteWaterExcelDatas();
         createScheduleOne.createProductLineExcelDatas();
-        createScheduleOne.WriteOut("C:\\Users\\Administrator\\Desktop\\test6.xlsx");
+        //请将下面路径换成想存的路径
+//        createScheduleOne.WriteOut("C:\\Users\\INC\\Desktop\\test6.xlsx");
     }
 }
